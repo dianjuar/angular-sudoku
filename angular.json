@@ -146,6 +146,27 @@
           }
         }
       }
+    },
+    "sudoku-utils": {
+      "root": "libs/sudoku-utils",
+      "sourceRoot": "libs/sudoku-utils/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/sudoku-utils/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sudoku-utils"],
+          "options": {
+            "jestConfig": "libs/sudoku-utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

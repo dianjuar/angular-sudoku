@@ -25,6 +25,9 @@
     "sudoku-e2e": {
       "tags": [],
       "implicitDependencies": ["sudoku"]
+    },
+    "sudoku-utils": {
+      "tags": []
     }
   }
 }

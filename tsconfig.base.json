@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@sudoku/sudoku-utils": ["libs/sudoku-utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
