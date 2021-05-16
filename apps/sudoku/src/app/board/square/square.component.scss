@@ -1,0 +1,39 @@
+:host(.border-top) {
+  input {
+    border-top: 2px solid #000;
+  }
+}
+
+:host(.border-right) {
+  input {
+    border-right: 2px solid #000;
+  }
+}
+
+:host(.border-bottom) {
+  input {
+    border-bottom: 2px solid #000;
+  }
+}
+
+:host(.border-left) {
+  input {
+    border-left: 2px solid #000;
+  }
+}
+
+input {
+  color: #000;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  background-color: #fff;
+  outline: none;
+
+  &:disabled {
+    background-color: #eee;
+  }
+}
