@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
-@Component({ selector: 'sudoku-board', template: '' })
-class BoardStubComponent {}
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent, BoardStubComponent],
+      imports: [MatToolbarModule, RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
