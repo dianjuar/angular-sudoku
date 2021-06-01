@@ -4,12 +4,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
+import { SudokuFacade } from './sudoku/+state/sudoku.facade';
+jest.mock('./sudoku/+state/sudoku.facade');
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MatToolbarModule, RouterTestingModule],
       declarations: [AppComponent],
+      providers: [SudokuFacade],
     }).compileComponents();
   });
 

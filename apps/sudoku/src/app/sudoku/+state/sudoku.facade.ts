@@ -8,12 +8,17 @@ import * as SudokuSelectors from './sudoku.selectors';
 
 @Injectable()
 export class SudokuFacade {
+  boardString$ = this.store.pipe(select(SudokuSelectors.getBoardString));
   board$ = this.store.pipe(select(SudokuSelectors.getBoardStructured));
   selectedLevelOfDifficulty$ = this.store.pipe(
     select(SudokuSelectors.getSelectedLevelDifficulty)
   );
 
   constructor(private store: Store) {}
+
+  initApp() {
+    this.store.dispatch(SudokuActions.initApplication());
+  }
 
   createBoardEasy() {
     this.store.dispatch(
