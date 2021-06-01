@@ -12,7 +12,12 @@ export const getSudokuState = createFeatureSelector<SudokuPartialState, State>(
 
 export const getBoardStructured = createSelector(
   getSudokuState,
-  (state: State) => state.board.structured
+  (state: State) => state.board?.structured
+);
+
+export const getBoardString = createSelector(
+  getSudokuState,
+  (state: State) => state.board?.simple
 );
 
 export const getSelectedLevelDifficulty = createSelector(

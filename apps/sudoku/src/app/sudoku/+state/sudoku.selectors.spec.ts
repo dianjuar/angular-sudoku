@@ -1,3 +1,4 @@
+import * as SudokuTestUtils from '../__mocks__/__utils__';
 import { DifficultyLevels, ISudokuBoard } from './sudoku.models';
 import {
   initialState,
@@ -13,23 +14,8 @@ describe('Sudoku Selectors', () => {
   let boardStructured: ISudokuBoard;
 
   beforeEach(() => {
-    boardStr = new Array(81).fill('').reduce((acc, _, index) => {
-      acc += '.';
-
-      if (index === 80) {
-        acc += '1';
-      }
-
-      return acc;
-    }, '');
-
-    boardStructured = new Array(9).fill(
-      new Array(9).fill({ isInitial: false })
-    );
-    boardStructured[8][8] = {
-      isInitial: true,
-      value: 1,
-    };
+    boardStr = SudokuTestUtils.getSuperSimpleBoardStr();
+    boardStructured = SudokuTestUtils.getSuperSimpleBoardStructured();
 
     state = {
       [SUDOKU_FEATURE_KEY]: {

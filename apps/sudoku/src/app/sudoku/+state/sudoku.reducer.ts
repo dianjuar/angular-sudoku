@@ -26,39 +26,20 @@ const sudokuReducer = createReducer(
   on(SudokuActions.selectDifficulty, (state, { level }) => ({
     ...state,
     selectedDifficulty: level,
-    ...generateBoard(level),
+  })),
+  on(SudokuActions.createStructuredBoard, (state, { board }) => ({
+    ...state,
+    board: {
+      simple: board,
+      structured: sudokuUtils.buildStructuredBoard<ISudokuSquare>(
+        board,
+        (): ISudokuSquare => ({ isInitial: false }),
+        (value): ISudokuSquare => ({ isInitial: true, value: parseInt(value) })
+      ),
+    },
   }))
 );
 
 export function reducer(state: State | undefined, action: Action) {
   return sudokuReducer(state, action);
-}
-
-function generateBoard(level: DifficultyLevels): Pick<State, 'board'> {
-  let boardString: string;
-
-  switch (level) {
-    case DifficultyLevels.EASY:
-      boardString = sudokuUtils.generateByDifficulty('easy');
-      break;
-    case DifficultyLevels.MEDIUM:
-      boardString = sudokuUtils.generateByDifficulty('medium');
-      break;
-    case DifficultyLevels.HARD:
-      boardString = sudokuUtils.generateByDifficulty('hard');
-      break;
-  }
-
-  const boardStructured = sudokuUtils.buildStructuredBoard<ISudokuSquare>(
-    boardString,
-    () => ({ isInitial: false }),
-    (value) => ({ isInitial: true, value: parseInt(value) })
-  );
-
-  return {
-    board: {
-      simple: boardString,
-      structured: boardStructured,
-    },
-  };
 }
